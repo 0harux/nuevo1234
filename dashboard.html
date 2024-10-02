@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio</title>
+    <link rel="stylesheet" href="asset/styles/master.css">
+    <script src="/asset/js/jquery-3.7.1.min.js"></script>
+    <script src="/asset/js/sweetalert2.all.min.js"></script>
+</head>
+
+<body>
+
+    <main class="dashboard">
+        <!-- Inicio de Barra navegadora -->
+        <nav class="sidebar" id="sidebar">
+            <div class="sidebar-content">
+                <div class="sidebar-item">Inicio</div>
+                <div class="sidebar-item">Usuarios
+                    <div class="submenu">
+                        <div class="submenu-item">Crear</div>
+                    </div>
+                </div>
+                <div class="sidebar-item">Productos
+                    <div class="submenu">
+                        <div class="submenu-item">Crear</div>
+                    </div>
+                </div>
+                <div class="sidebar-item">Inventario
+                    <div class="submenu">
+                        <div class="submenu-item">Crear</div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <!-- Fin de navegador -->
+
+        <!-- Inicio contenido inicial -->
+        <div class="main-content" id="main-content">
+            <!-- Inicio de contenido cabecera -->
+            <header class="header">
+                <button class="menu-toggle" id="menu-toggle">☰</button>
+                <div class="header-title">Nombre del modulo</div>
+                <div class="user-info">
+                    <img src="/asset/img/no-foto.png" class="user-photo" id="user-photo" alt="">
+                    <div class="dropdown" id="dropdown">
+                        <div class="dropdown-menu">
+                            <button class="dropdown-item">Nombre del usuario</button>
+                            <button class="dropdown-item">Perfil</button>
+                            <button class="dropdown-item">Cerrar sesión</button>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            <!-- Fin contenido cabecera -->
+
+            <!-- Inicio de área de contenido -->
+            <div class="content">
+                <!--inicio listado targetas-->
+                <div class="card">
+                    <div class="card-content">
+                        <h3>Nombre completo:</h3>
+                        <p>Tipo de documento:</p>
+                        <p>Documento:</p>
+                    </div>
+                    <div class="card-actions">
+                        <button class="edit-btn">Editar</button>
+                        <button class="delete-btn">Eliminar</button>
+                    </div>
+                </div>
+                <!-- fin listado tragetas -->
+
+                <!-- inicio modales -->
+                <div class="modal-create" id="modal-create">
+                    <div class="modal-control">
+                        <span class="close-btn" id="close-btn-create">&times;</span>
+                        <h2>Formulario general</h2>
+                        <form id="formCreate">
+                            <input type="text" name="nombreCompleto" placeholder="Nombre completo">
+                            <select name="tipoDocumento" id="">
+                                <option value="ti">T.I</option>
+                                <option value="cc" selected>C.C</option>
+                                <option value="ce">C.E</option>
+                            </select>
+                            <input type="number" name="documento" id="" placeholder="Número de documento">
+                            <input type="text" name="correo" id="" placeholder="Correo">
+                            <select name="rol" id="">
+                                <option value="Venderor" selected>Venderor</option>
+                                <option value="Administrador">Administrador</option>
+                                <option value="Comprador">Comprador</option>
+                            </select>
+                            <input type="password" name="contrasena" id="" placeholder="Contraseña">
+                            <input type="text" name="estado" value="1" hidden>
+                            <button type="submit">Crear</button>
+                        </form>
+                    </div>
+                </div>
+                
+            </div>
+            <!-- Fin de área de contenido -->
+        </div>
+        <!-- Fin contenido inicial -->
+    </main>
+</body>
+<script src="/asset/js/script.js"></script>
+
+</html>

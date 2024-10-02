@@ -1,0 +1,296 @@
+body{
+    margin: 0;
+    font-family: 'Roboto Mono', monospace;
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
+    background-image: url('/asset/img/fondo.jpg');
+    background-size: cover; /* Hace que la imagen cubra todo el fondo */
+    background-position: center; /* Centra la imagen */
+    background-repeat: no-repeat; /* No repite la imagen */
+
+    .dashboard{
+        display: flex;
+        width: 100%;
+        position: relative;
+    }
+
+    .sidebar{
+        width: 250px;
+        background-color:rgb(0, 0, 0);
+        color: rgb(255, 255, 255);
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        top: 60px;
+        left: 0;
+        height: calc(100%-60px);
+        transition: transform 0.5s ease;
+        transform: translateX(0);
+        z-index: 999;
+        border: none;
+        box-shadow: none;
+    }
+    .sidebar.hidden{
+        transform: translateX(-100%);
+    }
+    .sidebar-content{
+        flex-direction: column;
+        padding: 20px;
+    }
+    .sidebar-item{
+        padding: 10px;
+        cursor: pointer;
+        color: rgb(238, 141, 241);
+        transition: background-color 0.3s ease, border-radius 0.3s ease;
+        position: relative;
+    }
+    .sidebar-item:hover{
+        color: rgb(241, 180, 243);
+        border-radius: 0 15px 15px 0;
+    }
+    .submenu{
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+        padding-left: 20px;
+    }
+    .sidebar-item.active .submenu{
+        max-height: 200px;
+    }
+    .submenu-item{
+        padding: 10px;
+        cursor: pointer;
+        color: #ffffff;
+        transition: background-color 0.3s ease;
+        border-radius: 4px;
+    }
+    .submenu-item:hover{
+        background-color: #d0d0d0;
+    }
+    .submenu-item.active{
+        background-color: #b0b0b0;
+    }
+
+    .main-content{
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        transition: margin-left 0.3s ease;
+        margin-left: 250px;
+    }
+    .main-content.shifted{
+        margin-left: 0;
+    }
+
+    .header{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color:rgb(238, 141, 241);
+        padding: 10px;
+        z-index: 1000;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        border: none;
+        box-shadow: none;
+    }
+    .header-title{
+        font-size: 1.2em;
+        flex: 1;
+        margin-left: 10px;
+    }
+
+    .user-info{
+        display: flex;
+        align-items: center;
+        position: relative;
+    }
+
+    .user-photo{
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        object-fit: cover;
+        cursor: pointer;
+        z-index: 1001;
+    }
+
+    .dropdown{
+        position: absolute;
+        right: 0;
+        top: 100%;
+        display: none;
+    }
+
+    .dropdown.show{
+        display: block;
+    }
+
+    .dropdown-menu{
+        background: #000000;
+        width: 200px;
+        color: #ffffff;
+        border: 1px solid #918e8edd;
+        border-radius: 4px;
+        box-shadow: 0 2px 5px black;
+        z-index: 1000;
+    }
+
+    .dropdown-item{
+        padding: 10px;
+        cursor: pointer;
+        border: none;
+        background: none;
+        width: 100%;
+        text-align: left;
+    }
+
+    .dropdown-item:hover{
+        background-color: #696969;
+    }
+
+    .menu-toggle{
+        background-color: #000000;
+        color: rgb(255, 255, 255);
+        border: none;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        cursor: pointer;
+        z-index: 1001;
+        transition: background-color 0.3s ease;
+    }
+    .menu-toggle:hover{
+        background-color: #444343;
+    }
+
+    .content{
+        padding: 20px;
+        flex: 1;
+        margin: 20px;
+        margin-top: 80px;
+        background-image: url('/asset/img/fondo.jpg');
+        background-size: cover; /* Hace que la imagen cubra todo el fondo */
+        background-position: center; /* Centra la imagen */
+        background-repeat: no-repeat; /* No repite la imagen */
+        border: 1px solid #dddd;
+        border-radius: 20px;
+        box-shadow: 0 2px 5px rgb(0, 0, 0, 0.1);
+        overflow-y: auto;
+        max-height: calc(100vh - 160px);
+    }
+
+    .card{
+        background-color: #000000;
+        border-radius: 8px;
+        box-shadow: 0 2px 5px rgb(0, 0, 0, 0.3);
+        width: 300px;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+    .card:hover{
+        transform: scale(1.05);
+    }
+    .card-content h3{
+        font-size: 1.2em;
+        margin-bottom: 10px;
+        color: rgb(238, 141, 241);
+    }
+    .card-content p{
+        margin: 5px 0;
+        color: #fffefe;
+        font-size: 0.9em;
+    }
+    .card-actions{
+        display: flex;
+        justify-content: flex-end;
+        gap: 10px;
+        margin-top: 20px;
+    }
+
+    .edit-btn, .delete-btn{
+        padding: 8px 12px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+    .edit-btn{
+        background-color: #ffffff;
+        color:rgb(0, 0, 0)
+    }
+    .edit-btn:hover{
+        background-color: #625e64;
+    }
+    .delete-btn{
+        background-color: rgb(238, 141, 241);
+        color: white;
+    }
+    .delete-btn:hover{
+        background-color:  rgb(227, 117, 231);
+    }
+
+    .modal-create{
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0,);
+        justify-content: center;
+        align-items: center;
+
+        .modal-content{
+            display: flex;
+            flex-direction: column;
+            background-color: #000;
+            padding: 20px;
+            border-radius: 8px;
+            width: 400px;
+            height: auto;
+            box-shadow: 0 2px 20px rgba(255,255,255, 0.5);
+        }
+        .close-btn{
+            float: right;
+            font-size: 24px;
+            cursor: pointer;
+            color:#ddc6c6
+        }
+        .close-btn:hover{
+            color: #666;
+        }
+
+        #formCreate{
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            width: 100%;
+
+            input, select{
+                height: 30px;
+                border-radius: 7px;
+                border: 1px #ccc;
+            }
+
+            button{
+                height: 40px;
+                color: #ffffff;
+                border-radius: 10px;
+                background-color: #1a73e8;
+                border: none;
+                cursor: pointer;
+            }
+            button{
+                transition: 0.5s;
+                background-color: #468ff0;
+            }
+        }
+    }
+}
